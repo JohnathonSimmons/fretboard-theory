@@ -1,0 +1,14 @@
+{
+  "name": "Fretboard Theory",
+  "short_name": "Fretboard",
+  "description": "Intervals, chord construction, and scale-degree numbers on the guitar neck.",
+  "start_url": ".",
+  "scope": ".",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#141418",
+  "theme_color": "#141418",
+  "icons": [
+    { "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ]
+}
