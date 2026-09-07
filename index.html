@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#141418">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Fretboard">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icon.svg">
+<link rel="icon" href="icon.svg">
+<link rel="stylesheet" href="style.css">
+<title>Fretboard Theory</title>
+</head>
+<body>
+
+<header>
+  <h1>Fretboard Theory</h1>
+</header>
+
+<nav id="tabs">
+  <button data-tab="explore" class="on">Explore</button>
+  <button data-tab="chords">Chords</button>
+  <button data-tab="prog">Numbers</button>
+  <button data-tab="train">Train</button>
+</nav>
+
+<main>
+
+  <section id="explore" class="tab on">
+    <div class="controls">
+      <label>Root
+        <select id="ex-root"></select>
+      </label>
+      <label>Show
+        <select id="ex-mode">
+          <option value="intervals">Intervals from root</option>
+          <option value="notes">Note names</option>
+          <option value="degrees">Scale degrees</option>
+        </select>
+      </label>
+      <label class="check">
+        <input type="checkbox" id="ex-scaleonly" checked> Major scale only
+      </label>
+    </div>
+
+    <div id="ex-board" class="board-wrap"></div>
+
+    <div id="ex-readout" class="readout">Tap any note on the fretboard.</div>
+
+    <div class="note-card">
+      <h3>What am I looking at?</h3>
+      <p>Every note gets measured <em>against the root</em>. That distance is an
+      interval, and the interval number is what theory is actually built out of.</p>
+      <p><b>R</b> is the root. <b>3</b> is a major third (4 frets up).
+      <b>&#9837;3</b> is a minor third (3 frets up) &mdash; that one semitone is the whole
+      difference between a major and a minor chord. <b>5</b> is the perfect fifth,
+      7 frets up, the most stable sound against the root.</p>
+      <p>Switch to <b>Scale degrees</b> to see the same shapes numbered 1&ndash;7
+      inside the major scale. Those numbers are what the Numbers tab uses.</p>
+    </div>
+  </section>
+
+  <section id="chords" class="tab">
+    <div class="controls">
+      <label>Key
+        <select id="ch-key"></select>
+      </label>
+      <label>Chords
+        <select id="ch-size">
+          <option value="3">Triads (1-3-5)</option>
+          <option value="4">Sevenths (1-3-5-7)</option>
+        </select>
+      </label>
+    </div>
+
+    <div class="note-card tight">
+      <h3>How a chord gets built</h3>
+      <p>Take the major scale. Start on any degree, then skip a note, take one,
+      skip a note, take one. Stacking those thirds is the whole trick &mdash; and
+      the scale decides on its own whether the result is major, minor, or
+      diminished. You are not choosing the quality. The key is.</p>
+    </div>
+
+    <div id="ch-list" class="chordlist"></div>
+    <div id="ch-board" class="board-wrap"></div>
+    <div id="ch-readout" class="readout">Tap a chord above to see it on the neck.</div>
+  </section>
+
+  <section id="prog" class="tab">
+    <div class="controls">
+      <label>Key
+        <select id="pr-key"></select>
+      </label>
+      <label>Progression
+        <select id="pr-preset"></select>
+      </label>
+    </div>
+
+    <div id="pr-cards" class="proglist"></div>
+
+    <div class="rowbtns">
+      <button id="pr-play" class="primary">Play progression</button>
+    </div>
+
+    <div id="pr-explain" class="note-card"></div>
+
+    <div class="note-card">
+      <h3>Reading the numerals</h3>
+      <p>A roman numeral answers two questions at once: <b>which scale degree is
+      the root of this chord</b>, and <b>what quality did the scale hand that
+      degree</b>.</p>
+      <p>Uppercase means major. Lowercase means minor. A little circle means
+      diminished. So <b>vi</b> is &ldquo;build a chord on the 6th degree, and it comes
+      out minor.&rdquo;</p>
+      <p>This is why numerals beat chord names for describing music: <b>ii&ndash;V&ndash;I</b>
+      is the same motion in every key. Change the key and the letters change,
+      but the numbers &mdash; and the sound &mdash; do not.</p>
+    </div>
+  </section>
+
+  <section id="train" class="tab">
+    <div class="quizhead">
+      <span id="tr-score">0 / 0</span>
+      <button id="tr-skip" class="ghost">New question</button>
+    </div>
+
+    <p id="tr-prompt" class="prompt">Name the interval between the two marked notes.</p>
+    <div id="tr-board" class="board-wrap"></div>
+    <div id="tr-choices" class="choices"></div>
+    <div id="tr-feedback" class="readout"></div>
+  </section>
+
+</main>
+
+<footer>Tap notes to hear them. Add to Home Screen for full screen.</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
